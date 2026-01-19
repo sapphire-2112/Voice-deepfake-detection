@@ -1,6 +1,12 @@
 import librosa
+import os
 
-audio, sr = librosa.load("my_voice.wav", sr=None)
+BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+DATA_DIR = os.path.join(BASE_DIR, "Data")
+audio, sr = librosa.load(
+    os.path.join(DATA_DIR, "my_voice.wav"),
+    sr=16000
+)
 
 print("Sampling rate:", sr)
 print("Duration (sec):", len(audio) / sr)
